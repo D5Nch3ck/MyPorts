@@ -1,0 +1,12 @@
+--- The Unarchiver/XADMaster/XADPlatformLinux.m.orig	Mon Apr 24 17:58:07 2017
++++ The Unarchiver/XADMaster/XADPlatformLinux.m		Mon Apr 24 17:58:25 2017
+@@ -56,7 +56,7 @@
+ 		if(access) times[0]=[access timevalStruct];
+ 		if(modification) times[1]=[modification timevalStruct];
+ 
+-		int res=lutimes(cpath,times);
++		int res=utimes(cpath,times);
+ 		if(res!=0&&res!=ENOSYS) return XADUnknownError; // TODO: better error
+ 	}
+ 
+

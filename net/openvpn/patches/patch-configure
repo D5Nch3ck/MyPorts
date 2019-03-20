@@ -1,0 +1,13 @@
+$OpenBSD: patch-configure,v 1.20 2019/02/21 23:32:23 jca Exp $
+Index: configure
+--- configure.orig
++++ configure
+@@ -18033,7 +18033,7 @@ else
+ fi
+ 
+ 
+-sampledir="\$(docdir)/sample"
++sampledir="\$(docdir)"
+ 
+ 
+ 

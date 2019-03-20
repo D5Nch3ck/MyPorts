@@ -1,0 +1,2 @@
+@comment $OpenBSD: PLIST,v 1.21 2017/03/28 22:16:37 D5Nch3ck Exp $
+@bin bin/openvpn-openssl

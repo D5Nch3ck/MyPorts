@@ -1,0 +1,28 @@
+$OpenBSD: patch-src_openvpn_route_c,v 1.12 2017/09/29 16:36:23 jca Exp $
+
+- add support for on-link routes
+
+Index: src/openvpn/route.c
+--- src/openvpn/route.c.orig
++++ src/openvpn/route.c
+@@ -1781,12 +1781,17 @@ add_route(struct route_ipv4 *r,
+     }
+ #endif
+ 
+-    argv_printf_cat(&argv, "-net %s %s -netmask %s",
++    argv_printf_cat (&argv, "-net %s -netmask %s",
+                     network,
+-                    gateway,
+                     netmask);
+ 
+-    /* FIXME -- add on-link support for OpenBSD/NetBSD */
++    /* FIXME -- add on-link support for NetBSD */
++#ifdef TARGET_OPENBSD
++    if (is_on_link (is_local_route, flags, rgi))
++        argv_printf_cat (&argv, "-link -iface %s", rgi->iface);
++    else
++#endif
++        argv_printf_cat (&argv, "%s", gateway);
+ 
+     argv_msg(D_ROUTE, &argv);
+     status = openvpn_execve_check(&argv, es, 0, "ERROR: OpenBSD/NetBSD route add command failed");

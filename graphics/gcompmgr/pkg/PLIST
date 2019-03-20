@@ -1,0 +1,11 @@
+@comment $OpenBSD$
+@bin bin/gcompmgr
+share/doc/
+share/doc/gcompmgr/
+share/doc/gcompmgr/AUTHORS
+share/doc/gcompmgr/COPYING
+share/doc/gcompmgr/ChangeLog
+share/doc/gcompmgr/INSTALL
+share/doc/gcompmgr/NEWS
+share/doc/gcompmgr/README
+share/doc/gcompmgr/TODO

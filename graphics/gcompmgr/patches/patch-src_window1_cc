@@ -1,0 +1,20 @@
+--- gcompmgr-0.21/src/window1.cc.orig	Thu Oct  5 11:11:58 2017
++++ gcompmgr-0.21/src/window1.cc	Thu Oct  5 11:24:01 2017
+@@ -9,7 +9,7 @@
+ #include "window1.hh"
+ #include <sys/types.h>
+ #include <signal.h>
+-#include <sigc++/compatibility.h>
++/*#include <sigc++/compatibility.h>*/
+ #include <gtkmm/main.h>
+ #include <sys/stat.h>
+ #include <gtkmm/adjustment.h>
+@@ -211,7 +211,7 @@
+ 	vbox_tmp->pack_start(*hbox_dynamic, Gtk::PACK_SHRINK, 0);
+ 	vbox_tmp->pack_start(*sl_tmp, Gtk::PACK_SHRINK, 0);
+ 	
+-	bn_dynamic->signal_clicked().connect(SigC::slot(*this, &window1::on_bn_dynamic_clicked), false);
++	bn_dynamic->signal_clicked().connect(sigc::mem_fun(*this, &window1::on_bn_dynamic_clicked), false);
+ 	GtkAdjustment* _padj = sl_tmp_adj->gobj();
+ 	g_signal_connect (G_OBJECT (_padj), "value_changed", G_CALLBACK(&window1::_on_sl_dynamic_value_changed), this);
+ 

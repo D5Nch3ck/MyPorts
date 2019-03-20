@@ -1,0 +1,68 @@
+--- gcompmgr-0.21/src/window1_glade.cc.orig	Thu Oct  5 10:50:46 2017
++++ gcompmgr-0.21/src/window1_glade.cc	Thu Oct  5 10:51:00 2017
+@@ -15,7 +15,7 @@
+ #include "config.h"
+ #include <gtkmmconfig.h>
+ #if GTKMM_MAJOR_VERSION==2 && GTKMM_MINOR_VERSION>2
+-#include <sigc++/compatibility.h>
++/*#include <sigc++/compatibility.h>*/
+ #define GMM_GTKMM_22_24(a,b) b
+ #else //gtkmm 2.2
+ #define GMM_GTKMM_22_24(a,b) a
+@@ -584,31 +584,31 @@
+    statusbar1->show();
+    vbox1->show();
+    window1->show();
+-   quit1->signal_activate().connect(SigC::slot(*this, &window1_glade::on_quit1_activate), false);
+-   about1->signal_activate().connect(SigC::slot(*this, &window1_glade::on_about1_activate), false);
+-   bn_stopcompmgr->signal_clicked().connect(SigC::slot(*this, &window1_glade::on_bn_stopcompmgr_clicked), false);
+-   bn_startcompmgr->signal_clicked().connect(SigC::slot(*this, &window1_glade::on_bn_startcompmgr_clicked), false);
+-   bn_compositing->signal_clicked().connect(SigC::slot(*this, &window1_glade::on_bn_compositing_clicked), false);
+-   bn_translucency->signal_clicked().connect(SigC::slot(*this, &window1_glade::on_bn_translucency_clicked), false);
+-   bn_applytosession->signal_clicked().connect(SigC::slot(*this, &window1_glade::on_bn_applytosession_clicked), false);
+-   bn_confxorg->signal_clicked().connect(SigC::slot(*this, &window1_glade::on_bn_confxorg_clicked), false);
+-   bn_restartxcomp->signal_clicked().connect(SigC::slot(*this, &window1_glade::on_bn_restartxcomp_clicked), false);
+-   bn_restore_1a->signal_clicked().connect(SigC::slot(*this, &window1_glade::on_bn_restore_1a_clicked), false);
+-   sl_param_r->signal_value_changed().connect(SigC::slot(*this, &window1_glade::on_sl_param_r_value_changed), false);
+-   sl_param_o->signal_value_changed().connect(SigC::slot(*this, &window1_glade::on_sl_param_o_value_changed), false);
+-   sl_param_l->signal_value_changed().connect(SigC::slot(*this, &window1_glade::on_sl_param_l_value_changed), false);
+-   sl_param_t->signal_value_changed().connect(SigC::slot(*this, &window1_glade::on_sl_param_t_value_changed), false);
+-   sl_param_cap_i->signal_value_changed().connect(SigC::slot(*this, &window1_glade::on_sl_param_cap_i_value_changed), false);
+-   sl_param_O->signal_value_changed().connect(SigC::slot(*this, &window1_glade::on_sl_param_O_value_changed), false);
+-   sl_param_D->signal_value_changed().connect(SigC::slot(*this, &window1_glade::on_sl_param_D_value_changed), false);
+-   cb_param_a->signal_toggled().connect(SigC::slot(*this, &window1_glade::on_cb_param_a_toggled), false);
+-   cb_param_c->signal_toggled().connect(SigC::slot(*this, &window1_glade::on_cb_param_c_toggled), false);
+-   cb_param_C->signal_toggled().connect(SigC::slot(*this, &window1_glade::on_cb_param_C_toggled), false);
+-   cb_param_f->signal_toggled().connect(SigC::slot(*this, &window1_glade::on_cb_param_f_toggled), false);
+-   cb_param_F->signal_toggled().connect(SigC::slot(*this, &window1_glade::on_cb_param_F_toggled), false);
+-   cb_param_n->signal_toggled().connect(SigC::slot(*this, &window1_glade::on_cb_param_n_toggled), false);
+-   cb_param_s->signal_toggled().connect(SigC::slot(*this, &window1_glade::on_cb_param_s_toggled), false);
+-   cb_param_S->signal_toggled().connect(SigC::slot(*this, &window1_glade::on_cb_param_S_toggled), false);
++   quit1->signal_activate().connect(sigc::mem_fun(*this, &window1_glade::on_quit1_activate), false);
++   about1->signal_activate().connect(sigc::mem_fun(*this, &window1_glade::on_about1_activate), false);
++   bn_stopcompmgr->signal_clicked().connect(sigc::mem_fun(*this, &window1_glade::on_bn_stopcompmgr_clicked), false);
++   bn_startcompmgr->signal_clicked().connect(sigc::mem_fun(*this, &window1_glade::on_bn_startcompmgr_clicked), false);
++   bn_compositing->signal_clicked().connect(sigc::mem_fun(*this, &window1_glade::on_bn_compositing_clicked), false);
++   bn_translucency->signal_clicked().connect(sigc::mem_fun(*this, &window1_glade::on_bn_translucency_clicked), false);
++   bn_applytosession->signal_clicked().connect(sigc::mem_fun(*this, &window1_glade::on_bn_applytosession_clicked), false);
++   bn_confxorg->signal_clicked().connect(sigc::mem_fun(*this, &window1_glade::on_bn_confxorg_clicked), false);
++   bn_restartxcomp->signal_clicked().connect(sigc::mem_fun(*this, &window1_glade::on_bn_restartxcomp_clicked), false);
++   bn_restore_1a->signal_clicked().connect(sigc::mem_fun(*this, &window1_glade::on_bn_restore_1a_clicked), false);
++   sl_param_r->signal_value_changed().connect(sigc::mem_fun(*this, &window1_glade::on_sl_param_r_value_changed), false);
++   sl_param_o->signal_value_changed().connect(sigc::mem_fun(*this, &window1_glade::on_sl_param_o_value_changed), false);
++   sl_param_l->signal_value_changed().connect(sigc::mem_fun(*this, &window1_glade::on_sl_param_l_value_changed), false);
++   sl_param_t->signal_value_changed().connect(sigc::mem_fun(*this, &window1_glade::on_sl_param_t_value_changed), false);
++   sl_param_cap_i->signal_value_changed().connect(sigc::mem_fun(*this, &window1_glade::on_sl_param_cap_i_value_changed), false);
++   sl_param_O->signal_value_changed().connect(sigc::mem_fun(*this, &window1_glade::on_sl_param_O_value_changed), false);
++   sl_param_D->signal_value_changed().connect(sigc::mem_fun(*this, &window1_glade::on_sl_param_D_value_changed), false);
++   cb_param_a->signal_toggled().connect(sigc::mem_fun(*this, &window1_glade::on_cb_param_a_toggled), false);
++   cb_param_c->signal_toggled().connect(sigc::mem_fun(*this, &window1_glade::on_cb_param_c_toggled), false);
++   cb_param_C->signal_toggled().connect(sigc::mem_fun(*this, &window1_glade::on_cb_param_C_toggled), false);
++   cb_param_f->signal_toggled().connect(sigc::mem_fun(*this, &window1_glade::on_cb_param_f_toggled), false);
++   cb_param_F->signal_toggled().connect(sigc::mem_fun(*this, &window1_glade::on_cb_param_F_toggled), false);
++   cb_param_n->signal_toggled().connect(sigc::mem_fun(*this, &window1_glade::on_cb_param_n_toggled), false);
++   cb_param_s->signal_toggled().connect(sigc::mem_fun(*this, &window1_glade::on_cb_param_s_toggled), false);
++   cb_param_S->signal_toggled().connect(sigc::mem_fun(*this, &window1_glade::on_cb_param_S_toggled), false);
+ }
+ 
+ window1_glade::~window1_glade(
